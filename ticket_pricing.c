@@ -3,16 +3,16 @@
 
 int main(void) {
     int age;
-    float final_price = DEFAULT_PRICE;
+    float finalPrice = DEFAULT_PRICE;
 
     printf("Please enter your age > ");
     scanf("%d", &age);
 
     if (age < 12 || age > 65) {
-        final_price = DEFAULT_PRICE * 0.5f;
+        finalPrice = DEFAULT_PRICE * 0.5f;
     }
 
-    printf("Your ticket costs: %.2f TL\n", final_price);
+    printf("Your ticket costs: %.2f TL\n", finalPrice);
 
     return 0;
 }

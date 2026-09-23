@@ -10,5 +10,4 @@ int main(void) {
     printf("Welcome, %s!", name);
 
     return 0;
-
 }

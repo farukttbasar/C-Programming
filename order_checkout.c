@@ -7,27 +7,27 @@ int main(void) {
     const int FREE_SHIPPING_LIMIT = 250;
     
     float subtotal;
-    float vat_amount;
-    float shipping_cost;
+    float vatAmount;
+    float shippingCost;
     float total;
 
     printf("Please enter your subtotal > ");
     scanf("%f", &subtotal);
 
-    vat_amount = subtotal * VAT_RATE;
+    vatAmount = subtotal * VAT_RATE;
 
     if (subtotal >= FREE_SHIPPING_LIMIT) {
-        shipping_cost = 0;
+        shippingCost = 0;
     } else {
-        shipping_cost = SHIPPING_FEE;
+        shippingCost = SHIPPING_FEE;
     }
 
-    total = subtotal + shipping_cost + vat_amount;
+    total = subtotal + shippingCost + vatAmount;
 
     printf("\n---- ORDER RECEIPT ----\n");
     printf("Subtotal      : %8.2f TL\n", subtotal);
-    printf("VAT (10%%)      : %8.2f TL\n", vat_amount);
-    printf("Shipping Fee  : %8.2f TL\n", shipping_cost);
+    printf("VAT (10%%)      : %8.2f TL\n", vatAmount);
+    printf("Shipping Fee  : %8.2f TL\n", shippingCost);
     printf("-------------------------\n");
     printf("Total         : %8.2f TL", total);
 
