@@ -1,3 +1,5 @@
+// Writen in the ItA lab session.
+
 # include <stdio.h>
 
 int main(void) {
