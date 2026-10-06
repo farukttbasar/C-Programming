@@ -32,7 +32,6 @@ float find_lowest(int student_count, float grades[]) {
     return lowest;
 }
 
-
 int count_passed(int student_count, float grades[]) {
     int passed = 0;
 
@@ -44,7 +43,6 @@ int count_passed(int student_count, float grades[]) {
     return passed;
 }
 
-
 int count_failed(int student_count, float grades[]) {
     int failed = 0;
 
@@ -55,7 +53,6 @@ int count_failed(int student_count, float grades[]) {
     }
     return failed;
 }
-
 
 int main() {
     int student_count;
