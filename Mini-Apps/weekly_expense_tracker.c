@@ -3,11 +3,11 @@
 
 void show_menu(void);
 void print_full_breakdown(float expenses[], int days);
-void print_days_above_limit(float expenses[], int days, float daily_limit);
 float calculate_total(float expenses[], int days);
 float calculate_average(float expenses[], int days);
 int find_highest_day(float expenses[], int days);
 int find_lower_day(float expenses[], int days);
+void print_days_above_limit(float expenses[], int days, float daily_limit);
 
 int main(void) {
     float expenses[DAYS_IN_WEEK];
@@ -30,7 +30,6 @@ int main(void) {
 
             while (getchar() != '\n');
             printf("Invalid amount! Please enter a non-negative number.\n");
-            
         }
     }
 
@@ -51,19 +50,19 @@ int main(void) {
 
         switch (choice) {
             case 1:
-                printf("*** View Full Week Breakdown ***\n");
+                printf("\n*** View Full Week Breakdown ***\n");
                 print_full_breakdown(expenses, DAYS_IN_WEEK);
                 break;
 
             case 2:
-                printf("*** View Total & Average Spending ***\n");
+                printf("\n*** View Total & Average Spending ***\n");
                 printf("\n---------- SUMMARY -----------\n");
                 printf("Total expenses    : %.2f\n", calculate_total(expenses, DAYS_IN_WEEK));
                 printf("Daily Average     : %.2f\n", calculate_average(expenses, DAYS_IN_WEEK));
                 break;
 
             case 3:
-            printf("*** View Highest & Lowest Spending Days ***\n");
+            printf("\n*** View Highest & Lowest Spending Days ***\n");
                 low_idx = find_lower_day(expenses, DAYS_IN_WEEK);
                 high_idx = find_highest_day(expenses, DAYS_IN_WEEK);
                 printf("\n---------- RESULT -----------\n");
@@ -72,7 +71,7 @@ int main(void) {
                 break;
 
             case 4:
-                printf("*** Check Days Over Spending Limit ***\n");
+                printf("\n*** Check Days Over Spending Limit ***\n");
                 while (1) {
                     printf("Enter daily limit ($) > ");
                     if (scanf("%f", &daily_limit) == 1 && daily_limit >= 0.0f) {
@@ -86,7 +85,7 @@ int main(void) {
                 break;
 
             case 5:
-                printf("*** Update a Specific Day's Expense ***\n");
+                printf("\n*** Update a Specific Day's Expense ***\n");
                 while (1) {
                     printf("DAY-1 : %.2f\n", expenses[0]);
                     printf("DAY-2 : %.2f\n", expenses[1]);
@@ -112,9 +111,7 @@ int main(void) {
                             break;
                         }
                         while (getchar() != '\n');
-                        printf("Invalid amount! Please enter a non-negative number.\n");
-                        
-                        
+                        printf("Invalid amount! Please enter a non-negative number.\n");   
                 }
 
             default:
@@ -123,6 +120,7 @@ int main(void) {
         }
 
     }
+    return 0;
 }
 
 void show_menu(void) {

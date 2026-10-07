@@ -1,11 +1,10 @@
 # include <stdio.h>
 
 int main(void) {
+    int choice;
     float num1;
     float num2;
-    int choice;
     float result;
-
 
     printf("Enter the first number\n > ");
     scanf("%f", &num1);
