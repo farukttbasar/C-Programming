@@ -1,100 +1,140 @@
 # include <stdio.h>
 
+void display_menu(void);
+void prime_checker(int num);
+void perfect_checker(int num);
+void palindrome_checker(int num);
+void collatz_generator(int num);
+
 int main(void) {
-    int choice;
-    int n;
-    int i;
+	int choice;
+	int num;
+	
+	while (1) {
+		display_menu();
 
-    while (1) {
-        printf("=== Number Theory Toolkit ===\n");
-        printf("1. Prime classification\n");
-        printf("2. Perfect number check\n");
-        printf("3. Palindrome check\n");
-        printf("4. Collatz sequence\n");
-        printf("0. Exit\n");
-
-        printf("Choice: ");
-        if (scanf("%d", &choice) != 1) {
-            break;
-        }
-
-        if (choice == 0) {
-            printf("Goodbye!\n");
-            break;
-        }
-
-        printf("Enter a number (1-100000): ");
-        if (scanf("%d", &n) != 1) {
-            break;
-        }
-
-        if (choice == 1) {
-            if (n == 1) {
-                printf("Prime: NEITHER\n");
-            } else {
-                int is_prime = 1;
-
-                for (i = 2; i * i <= n; i++) {
-                    if (n % i ==0) {
-                        is_prime = 0;
-                        break;
-                    }
-                }
-
-                if (is_prime) {
-                    printf("Prime: PRIME\n");
-                } else {
-                    printf("Prime: COMPOSITE\n");
-                }
-            }
-
-        } else if (choice == 2) {
-            int sum = 0;
-
-            for (i = 1; i <= (n / 2); i++) {
-                if (n % i == 0) {
-                    sum += i;
-                }
-            }
-            
-            if (sum == n) {
-                printf("Perfect: PERFECT\n");
-            } else {
-                printf("Perfect: NOT PERFECT\n");
-            }
-    
-        } else if (choice == 3) {
-            int reversed = 0;
-            int temporary = n;
-
-            while (temporary > 0) {
-                reversed = (reversed * 10) + (temporary % 10);
-                temporary /= 10;
-            }
-
-            if (reversed == n) {
-                printf("Palindrome: PALINDROME\n");
-            } else {
-                printf("Palindrome: NOT PALINDROME\n");
-            }
-
-        } else if (choice == 4) {
-            int new_num = n;
-
-            printf("Collatz: %d", n);
-
-            while (new_num != 1) {
-                if (new_num % 2 == 0) {
-                    new_num /= 2;
-                } else {
-                    new_num = (new_num * 3) + 1;
-                }
-
-                printf(" %d", new_num);
-            }
-            printf("\n");
-        }
-    }
-
-    return 0;
+		printf("Choice > ");
+		if (scanf("%d", &choice) != 1) {
+			break;
+		}
+		
+		if (choice == 0) {
+			puts("Goodbye!");
+			break;
+		}
+		
+		if (choice < 1 || choice > 4) {
+			puts("Please enter an integer from the menu!");
+			continue;
+		}
+		
+		printf("Enter an integer between 1-100000 (inclusive) > ");
+		if (scanf("%d", &num) != 1) {
+			break;
+		}
+		
+		if (num < 1 || num > 100000) {
+			puts("Please enter an integer in the given range!");
+			continue;
+		}
+		
+		switch (choice) {
+			case 1:
+				prime_checker(num);
+				break;
+			case 2:
+				perfect_checker(num);
+				break;
+			case 3:
+				palindrome_checker(num);
+				break;
+			case 4:
+				collatz_generator(num);
+				break;
+		}	
+	}
+	return 0;	
 }
+
+void display_menu(void) {
+	puts("=== Number Theory Toolkit ===");
+	puts("1. Prime classification");
+	puts("2. Perfect number check");
+	puts("3. Palindrome check");
+	puts("4. Collatz sequence");
+	puts("0. Exit");
+}
+
+void prime_checker(int num) {
+	int i;
+	int is_prime = 1;
+	if (num == 1) {
+		puts("Prime: NEITHER");
+		return;
+	}
+	
+	for (i = 2; i * i <= num; i++) {
+		if (num % i == 0) {
+			is_prime = 0;
+			break;			
+		}
+	}
+	
+	if (is_prime) {
+		puts("Prime: PRIME");
+	} else {
+		puts("Prime: COMPOSITE");
+	}
+}
+
+void perfect_checker(int num) {
+	int i;
+	int sum = 0;
+	
+	for (i = 1; i <= (num / 2); i++) {
+		if (num % i == 0) {
+			sum += i;
+		}
+	}
+	
+	if (sum == num) {
+		puts("Perfect: PERFECT");
+	} else {
+		puts("Perfect: NOT PERFECT");
+	}
+}
+
+void palindrome_checker(int num) {
+	int temporary = num;
+	int reversed = 0;
+	
+	while (temporary > 0) {
+		reversed = (reversed * 10) + (temporary % 10);
+		temporary /= 10;
+	}
+	
+	if (reversed == num) {
+		puts("Palindrome: PALINDROME");
+	} else {
+		puts("Palindrome: NOT PALINDROME");
+	}
+}
+
+void collatz_generator(int num) {
+	int current = num;
+	
+	printf("Collatz: %d", current);
+	
+	while (current != 1) {
+		if (current % 2 == 0) {
+			current /= 2;
+		} else {
+			current = (current * 3) + 1;
+		}
+		
+		printf(" %d", current);
+	}
+	printf("\n");
+}
+
+
