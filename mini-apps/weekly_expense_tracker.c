@@ -100,6 +100,7 @@ int main(void) {
                     }
                     while (getchar() != '\n');
                     printf("Invalid day! Must be between 1 and %d.\n", DAYS_IN_WEEK);
+                break;
                     
                 }
 
