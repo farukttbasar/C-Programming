@@ -2,7 +2,7 @@
 # define NUMBER 10
 
 int calculate_sum(int numbers[]);
-int calculate_average(int numbers[]);
+float calculate_average(int numbers[]);
 
 int main(void) {
     int numbers[NUMBER];
@@ -30,6 +30,6 @@ int calculate_sum(int numbers[]) {
     return sum;
 }
 
-int calculate_average(int numbers[]) {
-    return calculate_sum(numbers) / NUMBER;
+float calculate_average(int numbers[]) {
+    return (float)calculate_sum(numbers) / NUMBER;
 }
